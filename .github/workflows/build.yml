@@ -48,25 +48,14 @@ jobs:
           tags: |
             type=raw,value=${{ inputs.sandbox_server_ref }}
 
-      - name: Build upstream image
+      - name: Build and push
         uses: docker/build-push-action@v6
         with:
           context: ./sandbox-server
-          file: ./sandbox-server/containers/app/Dockerfile
-          load: true
-          tags: sandbox-server-upstream:local
-          platforms: linux/amd64
-          build-args: |
-            OPENHANDS_BUILD_VERSION=${{ inputs.sandbox_server_ref }}
-
-      - name: Build and push with permission fix
-        uses: docker/build-push-action@v6
-        with:
-          context: .
           file: ./Dockerfile
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           platforms: linux/amd64
           build-args: |
-            UPSTREAM_IMAGE=sandbox-server-upstream:local
+            OPENHANDS_BUILD_VERSION=${{ inputs.sandbox_server_ref }}
