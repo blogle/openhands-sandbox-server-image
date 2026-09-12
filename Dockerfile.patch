@@ -1,0 +1,10 @@
+# Thin layer on top of the upstream sandbox-server image.
+# Fixes /app directory permissions so the entrypoint.sh can run as root
+# (the upstream image uses chmod 770 on /app, which blocks root in some
+# containerd configurations).
+FROM scratch AS patch
+# (no-op; just for documentation)
+
+# The real FROM is passed as a build arg via the workflow.
+# This file is a placeholder; the actual build uses the upstream Dockerfile
+# with a post-build permission fix.
