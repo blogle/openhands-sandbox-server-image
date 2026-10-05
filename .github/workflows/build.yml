@@ -21,10 +21,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out packaging repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Check out OpenHands/sandbox-server
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           repository: OpenHands/sandbox-server
           ref: ${{ inputs.sandbox_server_ref }}
