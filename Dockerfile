@@ -4,7 +4,7 @@
 # upstream image and then relaxes /app permissions for root access.
 
 ARG OPENHANDS_BUILD_VERSION=dev
-FROM python:3.13.7-slim-trixie AS base
+FROM python:3.14.8-slim-trixie AS base
 
 FROM base AS backend-builder
 
